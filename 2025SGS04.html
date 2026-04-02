@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard - OGBORIEFON ABDULFATAI</title>
+<style>
+    body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; }
+    header { background-color: #1d4ed8; color: #ffffff; padding: 20px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 15px; }
+    header img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid #ffffff; object-fit: cover; }
+    header span { font-weight: bold; font-size: 28px; }
+    .profile { text-align: center; margin-top: 30px; }
+    .profile img { height: 120px; width: 120px; border-radius: 50%; border: 3px solid #1d4ed8; object-fit: cover; }
+    .profile h2, .profile p { margin: 5px 0; }
+    .welcome { text-align: center; margin-top: 10px; font-size: 18px; color: #2563eb; }
+    .table-wrapper { overflow-x: auto; margin: 30px auto; width: 95%; }
+    .scores-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    .scores-table th, .scores-table td { border: 1px solid #d1d5db; padding: 8px; text-align: center; }
+    .scores-table th { background-color: #1d4ed8; color: white; }
+    .scores-table td { background-color: #f3f4f6; }
+    button.logout { display: block; margin: 30px auto; padding: 12px 25px; font-size: 16px; background-color: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    button.logout:hover { background-color: #f87171; }
+    @media screen and (max-width: 480px) { header span { font-size: 22px; } .profile img { height: 100px; width: 100px; } }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="https://i.postimg.cc/wt6gV7BL/logo.png" alt="Logo">
+    <span>STUDY GROUP SLT</span>
+</header>
+
+<div class="profile">
+    <img src="https://via.placeholder.com/120" alt="Profile Picture">
+    <h2>OGBORIEFON ABDULFATAI</h2>
+    <p>Registration Number: 2025SGS04</p>
+    <div class="welcome">Welcome to your student dashboard!</div>
+</div>
+
+<div class="table-wrapper">
+    <table class="scores-table">
+        <tr>
+            <th>Course</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        <tr><td>Plant and Animal Taxonomy</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Morphology and Physiology of Living Things</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>General Principles of Chemistry</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Inorganic Chemistry</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Mechanics</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Heat Energy</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Electronic Logic for Science</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>General Laboratory Technology</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Uses of English</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Citizenship Education</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Use of Library</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    </table>
+</div>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+<script>
+function logout() {
+    window.location.href = 'index.html';
+}
+</script>
+
+</body>
+</html>
