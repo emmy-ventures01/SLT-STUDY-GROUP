@@ -2,160 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>STUDY GROUP SLT</title>
+<title>STUDY GROUP SLT Portal</title>
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: white;
+    background-color: white;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-
 header {
-    background: #1d4ed8;
+    background-color: #1d4ed8;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
 }
-
 header img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     border: 3px solid white;
-    margin-bottom: 10px;
 }
-
 header h2 {
     margin: 0;
-    font-size: 28px;
 }
-
 .container {
-    width: 90%;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+    margin-top: 50px;
 }
-
-h3 {
-    margin-bottom: 25px;
-    font-size: 22px;
-}
-
 input {
-    width: 100%;
-    padding: 15px;
-    margin: 12px 0;
+    width: 280px;
+    padding: 14px;
+    margin: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
     font-size: 16px;
 }
-
 button {
-    width: 100%;
-    padding: 15px;
+    padding: 12px 25px;
     background: #1d4ed8;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 12px;
 }
-
 button:hover {
     background: #2563eb;
 }
-
-#createBox {
-    display: none;
-    margin-top: 20px;
-}
-
 #msg {
     margin-top: 15px;
     font-weight: bold;
-    color: #d00;
+    color: #dc2626;
 }
+a {
+    display: block;
+    margin-top: 15px;
+    color: #1d4ed8;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.hidden { display: none; }
 </style>
 </head>
 <body>
 
 <header>
-    <img src="https://i.postimg.cc/wt6gV7BL/logo.png">
+    <img src="https://i.postimg.cc/wt6gV7BL/logo.png" alt="Logo">
     <h2>STUDY GROUP SLT</h2>
 </header>
 
 <div class="container">
-<h3>Student Login</h3>
 
-<input id="reg" placeholder="Registration Number">
-<input id="pass" type="password" placeholder="Password">
+<!-- Login Form -->
+<div id="loginForm">
+    <h3>Login to your portal</h3>
+    <input id="loginReg" placeholder="Registration Number"><br>
+    <input id="loginPass" type="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <a onclick="showSignup()">Don't have an account? Signup</a>
+</div>
 
-<button onclick="login()">Login</button>
-
-<div id="createBox">
-    <h4>Create Password</h4>
-    <input id="newPass" type="password" placeholder="Create Password (min 8 characters)">
-    <button onclick="create()">Create Account</button>
+<!-- Signup Form -->
+<div id="signupForm" class="hidden">
+    <h3>Create Your Account</h3>
+    <input id="signupReg" placeholder="Registration Number"><br>
+    <input id="signupPass" type="password" placeholder="Create Password (8+ chars)"><br>
+    <button onclick="signup()">Create Account</button>
+    <a onclick="showLogin()">Back to Login</a>
 </div>
 
 <p id="msg"></p>
 </div>
 
 <script>
-const valid = ["2025SGS01","2025SGS02","2025SGS03","2025SGS04","2025SGS05","2025SGS06","2025SGS07","2025SGS08","2025SGS09"];
+// Valid registration numbers
+const validRegs = [
+    "2025SGS01","2025SGS02","2025SGS03",
+    "2025SGS04","2025SGS05","2025SGS06",
+    "2025SGS07","2025SGS08","2025SGS09"
+];
 
+// Login function
 function login() {
-    let reg = document.getElementById("reg").value.trim();
-    let pass = document.getElementById("pass").value;
-    let stored = localStorage.getItem(reg);
-    document.getElementById("msg").innerText = "";
+    const reg = document.getElementById("loginReg").value.trim();
+    const pass = document.getElementById("loginPass").value;
+    const stored = localStorage.getItem(reg);
+    const msg = document.getElementById("msg");
+    msg.style.color = "#dc2626";
+    msg.innerText = "";
 
-    if(!valid.includes(reg)){
-        document.getElementById("msg").innerText = "Invalid Registration Number!";
+    if(!validRegs.includes(reg)) {
+        msg.innerText = "Invalid Registration Number!";
         return;
     }
 
-    if(stored === null){
-        document.getElementById("createBox").style.display = "block";
-        document.getElementById("msg").innerText = "No account found. Create your password.";
+    if(!stored) {
+        msg.innerText = "No account found. Please signup first.";
         return;
     }
 
-    if(pass === stored){
-        window.location.href = reg + ".html";
+    if(stored === pass) {
+        window.location.href = reg + ".html"; // redirect to dashboard
     } else {
-        document.getElementById("msg").innerText = "Incorrect Password!";
+        msg.innerText = "Incorrect Password!";
     }
 }
 
-function create() {
-    let reg = document.getElementById("reg").value.trim();
-    let newPass = document.getElementById("newPass").value;
+// Signup function
+function signup() {
+    const reg = document.getElementById("signupReg").value.trim();
+    const pass = document.getElementById("signupPass").value;
+    const msg = document.getElementById("msg");
+    msg.style.color = "#16a34a";
+    msg.innerText = "";
 
-    if(localStorage.getItem(reg) !== null){
-        document.getElementById("msg").innerText = "Password already created!";
+    if(!validRegs.includes(reg)) {
+        msg.style.color = "#dc2626";
+        msg.innerText = "Invalid Registration Number!";
         return;
     }
 
-    if(newPass.length < 8){
-        document.getElementById("msg").innerText = "Password must be at least 8 characters!";
+    if(localStorage.getItem(reg) !== null) {
+        msg.style.color = "#dc2626";
+        msg.innerText = "Password already created! Cannot be changed.";
         return;
     }
 
-    localStorage.setItem(reg, newPass);
-    document.getElementById("msg").innerText = "Account created successfully! Now login.";
-    document.getElementById("createBox").style.display = "none";
+    if(pass.length < 8) {
+        msg.style.color = "#dc2626";
+        msg.innerText = "Password must be at least 8 characters!";
+        return;
+    }
+
+    localStorage.setItem(reg, pass);
+    msg.innerText = "Account created successfully! You can now login.";
+    setTimeout(showLogin, 1500); // automatically switch to login
+}
+
+// Show signup form
+function showSignup() {
+    document.getElementById("loginForm").classList.add("hidden");
+    document.getElementById("signupForm").classList.remove("hidden");
+    document.getElementById("msg").innerText = "";
+}
+
+// Show login form
+function showLogin() {
+    document.getElementById("signupForm").classList.add("hidden");
+    document.getElementById("loginForm").classList.remove("hidden");
+    document.getElementById("msg").innerText = "";
 }
 </script>
 
