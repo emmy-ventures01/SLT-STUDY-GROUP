@@ -4,22 +4,103 @@
 <meta charset="UTF-8">
 <title>Dashboard - OJIEZOGBON EMMANUEL</title>
 <style>
-    body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; }
-    header { background-color: #1d4ed8; color: #ffffff; padding: 20px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 15px; }
-    header img { height: 80px; width: 80px; border-radius: 50%; border: 3px solid #ffffff; object-fit: cover; }
-    header span { font-weight: bold; font-size: 28px; }
-    .profile { text-align: center; margin-top: 30px; }
-    .profile img { height: 120px; width: 120px; border-radius: 50%; border: 3px solid #1d4ed8; object-fit: cover; }
-    .profile h2, .profile p { margin: 5px 0; }
-    .welcome { text-align: center; margin-top: 10px; font-size: 18px; color: #2563eb; }
-    .table-wrapper { overflow-x: auto; margin: 30px auto; width: 95%; }
-    .scores-table { width: 100%; border-collapse: collapse; min-width: 700px; }
-    .scores-table th, .scores-table td { border: 1px solid #d1d5db; padding: 8px; text-align: center; }
-    .scores-table th { background-color: #1d4ed8; color: white; }
-    .scores-table td { background-color: #f3f4f6; }
-    button.logout { display: block; margin: 30px auto; padding: 12px 25px; font-size: 16px; background-color: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; }
-    button.logout:hover { background-color: #f87171; }
-    @media screen and (max-width: 480px) { header span { font-size: 22px; } .profile img { height: 100px; width: 100px; } }
+    body { 
+        font-family: Arial, sans-serif; 
+        background-color: #ffffff; 
+        margin: 0; 
+        padding: 0; 
+    }
+    header { 
+        background-color: #1d4ed8; 
+        color: #ffffff; 
+        padding: 20px; 
+        text-align: center; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 15px; 
+    }
+    header img { 
+        height: 80px; 
+        width: 80px; 
+        border-radius: 50%; 
+        border: 3px solid #ffffff; 
+        object-fit: cover; 
+    }
+    header span { 
+        font-weight: bold; 
+        font-size: 28px; 
+    }
+    .profile { 
+        text-align: center; 
+        margin-top: 30px; 
+    }
+    .profile img { 
+        height: 150px;        /* bigger profile picture */
+        width: 150px; 
+        border-radius: 50%; 
+        border: 4px solid #1d4ed8; 
+        object-fit: cover; 
+    }
+    .profile h2 { 
+        margin: 10px 0; 
+        font-weight: bold; 
+        font-size: 26px;       /* larger bold name */
+        color: #1d4ed8; 
+    }
+    .profile p { 
+        font-size: 18px; 
+        color: #333; 
+        margin: 5px 0; 
+    }
+    .welcome { 
+        text-align: center; 
+        margin-top: 10px; 
+        font-size: 18px; 
+        color: #2563eb; 
+    }
+    .table-wrapper { 
+        overflow-x: auto; 
+        margin: 30px auto; 
+        width: 95%; 
+    }
+    .scores-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        min-width: 700px; 
+    }
+    .scores-table th, .scores-table td { 
+        border: 1px solid #d1d5db; 
+        padding: 8px; 
+        text-align: center; 
+    }
+    .scores-table th { 
+        background-color: #1d4ed8; 
+        color: white; 
+    }
+    .scores-table td { 
+        background-color: #f3f4f6; 
+    }
+    button.logout { 
+        display: block; 
+        margin: 30px auto; 
+        padding: 12px 25px; 
+        font-size: 16px; 
+        background-color: #ef4444; 
+        color: white; 
+        border: none; 
+        border-radius: 8px; 
+        cursor: pointer; 
+    }
+    button.logout:hover { 
+        background-color: #f87171; 
+    }
+    @media screen and (max-width: 480px) { 
+        header span { font-size: 22px; } 
+        .profile img { height: 120px; width: 120px; } 
+        .profile h2 { font-size: 22px; } 
+        .profile p { font-size: 16px; } 
+    }
 </style>
 </head>
 <body>
@@ -30,7 +111,7 @@
 </header>
 
 <div class="profile">
-    <img src="https://via.placeholder.com/120" alt="Profile Picture">
+    <img src="https://i.postimg.cc/23L3jXMs/photo.jpg" alt="Profile Picture">
     <h2>OJIEZOGBON EMMANUEL</h2>
     <p>Registration Number: 2025SGS05</p>
     <div class="welcome">Welcome to your student dashboard!</div>
@@ -69,4 +150,4 @@ function logout() {
 </script>
 
 </body>
-</html>
+                                                                                       </html>
