@@ -1,0 +1,226 @@
+/* ===========================
+   Highly Professional style.css
+   For all student dashboards
+=========================== */
+
+/* ---------- GENERAL ---------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+    line-height: 1.6;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background-color: #1e40af; /* Deep blue */
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header img {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+}
+
+header span {
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+/* ---------- PROFILE SECTION ---------- */
+.profile {
+    text-align: center;
+    margin: 30px auto 20px auto;
+    padding: 10px 20px;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.profile img {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    border: 4px solid #1e40af;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile h2 {
+    margin: 5px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e3a8a;
+}
+
+.profile p {
+    margin: 2px 0;
+    font-size: 16px;
+    color: #374151;
+}
+
+.welcome {
+    margin-top: 8px;
+    font-size: 18px;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+/* ---------- TABLE CONTAINER ---------- */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 30px auto;
+    width: 95%;
+    max-width: 1000px;
+}
+
+.scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.scores-table th,
+.scores-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.scores-table th {
+    background-color: #1e40af;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.scores-table td {
+    background-color: #f3f4f6;
+    font-weight: 500;
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 15px auto;
+    display: block;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+button.logout {
+    background-color: #dc2626;
+    color: white;
+}
+
+button.logout:hover {
+    background-color: #ef4444;
+    transform: translateY(-2px);
+}
+
+button.action {
+    background-color: #1e40af;
+    color: white;
+}
+
+button.action:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    width: 95%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.modal-content button {
+    width: 80%;
+}
+
+/* ---------- FOOTER / INFO BUTTON ---------- */
+.info-button {
+    background-color: #2563eb;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.info-button:hover {
+    background-color: #1e40af;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: 480px) {
+    header span {
+        font-size: 22px;
+    }
+
+    .profile img {
+        height: 110px;
+        width: 110px;
+    }
+
+    .profile h2 {
+        font-size: 20px;
+    }
+
+    .welcome {
+        font-size: 16px;
+    }
+
+    .scores-table th,
+    .scores-table td {
+        padding: 8px 5px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+
+    .modal-content {
+        margin: 80px auto;
+    }
+}
