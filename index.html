@@ -96,11 +96,10 @@ button {
 
 </style>
 </head>
-
 <body>
 
 <header>
-    <img src="https://i.postimg.cc/wt6gV7BL/logo.png">
+    <img src="https://i.postimg.cc/wt6gV7BL/logo.png" alt="SLT Logo">
     <h2>SLT STUDENT PORTAL</h2>
 </header>
 
@@ -120,6 +119,11 @@ button {
     <button onclick="login()">Login</button>
 
     <span class="link" onclick="showSignup()">Don't have an account? Signup</span>
+
+    <p style="margin-top:20px; font-size:14px; color:#444;">
+        If you do not have a Registration Number, kindly proceed with registration.
+    </p>
+    <button onclick="openModal()" style="background:#16a34a;">Get Registration Number</button>
 </div>
 
 <!-- SIGNUP -->
@@ -142,67 +146,102 @@ button {
 
 <p id="msg"></p>
 
-<script>
+<!-- REGISTRATION MODAL -->
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
+<div style="background:white; width:90%; max-width:400px; margin:80px auto; padding:20px; border-radius:15px; text-align:center;">
+<h3>Registration Process</h3>
 
+<p style="font-size:14px;">
+To obtain your Registration Number, kindly make a payment of <b>₦500</b>.
+</p>
+
+<p><b>Bank/Service:</b> OPAY</p>
+<p><b>Account Name:</b> MARY OKORUWA OMOTUOHAME</p>
+
+<p>
+<b>Account Number:</b><br>
+<span id="acct">8060281206</span>
+</p>
+
+<button onclick="copyAcct()" style="background:#2563eb; color:white; padding:12px 20px; border:none; border-radius:8px; margin-top:10px;">
+Copy Account Number
+</button>
+
+<hr style="margin:20px 0;">
+
+<p style="font-size:13px;">
+After payment, click below to send proof and receive your Registration Number.
+</p>
+
+<button onclick="contactAdmin()" style="background:#16a34a; color:white; padding:12px 20px; border:none; border-radius:8px;">
+Send Payment Proof
+</button>
+
+<br><br>
+
+<button onclick="closeModal()" style="background:#ef4444; color:white; padding:12px 20px; border:none; border-radius:8px;">
+Close
+</button>
+</div>
+</div>
+
+<script>
 // 🔥 RESET OLD DATA ONCE
 if (!localStorage.getItem("resetDone")) {
     localStorage.clear();
     localStorage.setItem("resetDone", "true");
 }
 
-// VALID USERS
+// VALID REGISTRATION NUMBERS
 const validRegs = [
 "2025SGS01","2025SGS02","2025SGS03",
 "2025SGS04","2025SGS05","2025SGS06",
 "2025SGS07","2025SGS08","2025SGS09"
 ];
 
-// LOGIN
+// LOGIN FUNCTION
 function login() {
 let reg = loginReg.value.trim();
 let pass = loginPass.value;
 let stored = localStorage.getItem(reg);
-
 msg.style.color = "red";
 
 if (!validRegs.includes(reg)) {
-msg.innerText = "Invalid Registration Number!";
-return;
+    msg.innerText = "Invalid Registration Number!";
+    return;
 }
 
 if (!stored) {
-msg.innerText = "No account found. Signup first.";
-return;
+    msg.innerText = "No account found. Signup first.";
+    return;
 }
 
 if (stored === pass) {
-window.location.href = reg + ".html";
+    window.location.href = reg + ".html"; // Redirect to student dashboard
 } else {
-msg.innerText = "Incorrect Password!";
+    msg.innerText = "Incorrect Password!";
 }
 }
 
-// SIGNUP
+// SIGNUP FUNCTION
 function signup() {
 let reg = signupReg.value.trim();
 let pass = signupPass.value;
+msg.style.color = "red";
 
 if (!validRegs.includes(reg)) {
-msg.style.color = "red";
-msg.innerText = "Invalid Registration Number!";
-return;
+    msg.innerText = "Invalid Registration Number!";
+    return;
 }
 
 if (localStorage.getItem(reg)) {
-msg.style.color = "red";
-msg.innerText = "Password already exists!";
-return;
+    msg.innerText = "Password already exists!";
+    return;
 }
 
 if (pass.length < 8) {
-msg.style.color = "red";
-msg.innerText = "Password must be at least 8 characters!";
-return;
+    msg.innerText = "Password must be at least 8 characters!";
+    return;
 }
 
 localStorage.setItem(reg, pass);
@@ -230,7 +269,42 @@ let input = document.getElementById(id);
 input.type = input.type === "password" ? "text" : "password";
 }
 
+// MODAL FUNCTIONS
+function openModal() {
+document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+document.getElementById("modal").style.display = "none";
+}
+
+// COPY ACCOUNT NUMBER
+function copyAcct() {
+const acct = document.getElementById("acct").innerText;
+navigator.clipboard.writeText(acct);
+alert("Account number copied!");
+}
+
+// WHATSAPP CONTACT
+function contactAdmin() {
+const phone = "2347030835378";
+const message = encodeURIComponent(
+`Good day,
+
+I have completed the payment of ₦500 for Registration Number generation on the SLT Study Group Portal.
+
+Name:
+Amount Paid: ₦500
+Date of Payment:
+
+I will attach proof of payment shortly.
+
+Thank you.`
+);
+
+window.location.href = `https://wa.me/${phone}?text=${message}`;
+}
 </script>
 
 </body>
-            </html>
+</html>
